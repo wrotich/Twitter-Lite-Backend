@@ -1,10 +1,9 @@
 source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
   "https://github.com/#{repo_name}.git"
 end
-
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.7', '>= 5.0.7.2'
@@ -28,16 +27,17 @@ gem 'puma', '~> 3.0'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
-  gem "faker"
-  gem "pry"
+  gem 'pry'
+  gem 'rspec-rails', '~> 3.5'
   gem 'rubocop', '~> 0.50.0', require: false
 end
 
 group :test do
-  gem "database_cleaner"
-  gem "factory_bot_rails"
-  gem "rspec-rails", "~> 3.5"
-  gem "shoulda-matchers", "~> 3.1"
+  gem 'database_cleaner'
+  gem 'factory_bot_rails', '~> 4.0'
+  gem 'faker'
+  gem 'shoulda', '~> 3.5'
+  gem 'shoulda-matchers'
 end
 
 group :development do
@@ -51,4 +51,9 @@ gem 'simplecov'
 gem 'simplecov-console'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+
+# Use ActiveModel has_secure_password
+gem 'bcrypt', '~> 3.1.7'
+
+gem 'jwt'
