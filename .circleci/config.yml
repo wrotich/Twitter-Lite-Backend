@@ -1,0 +1,43 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/twitter-lite-backend
+    docker:
+      - image: circleci/ruby:2.6.0-node
+        environment:
+          BUNDLER_VERSION: 2.0.1
+          PGHOST: localhost
+          PGUSER: twitter-lite-backend
+          RAILS_ENV: test
+          CC_TEST_REPORTER_ID: $CC_TEST_REPORTER_ID
+      - image: postgres:9.5
+        environment:
+          POSTGRES_USER: twitter-lite-backend
+          POSTGRES_DB: twitter-lite-backend_test
+          POSTGRES_PASSWORD: ""
+
+    steps:
+      - checkout
+
+      - run: 
+          name: Bundle Install
+          command: |
+            gem update --system
+            gem uninstall bundler
+            rm /usr/local/bin/bundle
+            rm /usr/local/bin/bundler
+            gem install bundler
+            bundle install
+
+      - run:
+          name: Setup Database
+          command: |
+            bundle exec rake db:setup
+      
+      - run:
+          name: Tests
+          command: |
+            bundle exec rspec
+
+      - store_artifacts:
+          path: coverage
