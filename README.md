@@ -1,25 +1,30 @@
-# README
+[![Build Status](https://travis-ci.org/wrotich/twitter-lite-backend.svg?branch=develop)](https://travis-ci.org/wrotich/twitter-lite-backend) [![CircleCI](https://circleci.com/gh/wrotich/twitter-lite-backend/tree/develop.svg?style=svg)](https://circleci.com/gh/wrotich/twitter-lite-backend/tree/develop) 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# TWITTER-LITE-BACKEND
 
-Things you may want to cover:
+Twitter-Lite is an application used to allow andelan users to read and post tweets.
 
-* Ruby version
+# EXTERNAL-DEPENDENCIES
 
-* System dependencies
+This web application is written with Ruby using the Ruby on Rails framework and a PostgreSQL database. You need Ruby version 2.4.1 for the application to work
 
-* Configuration
+* To install rvm , visit [RVM](https://rvm.io/rvm/install)
+* To install this ruby version, you can run the command below but you can use other channels to install it as well e.g. `rbenv`.
+    ```bash
+    rvm install ruby-2.4.1
+    ```
+* To install PostgreSQL, run
+    ```bash
+    brew install postgres
+    ```
 
-* Database creation
+*To know more about Ruby or Rails visit [Ruby Lang](https://www.ruby-lang.org) or [Ruby on Rails](http://rubyonrails.org/).*
 
-* Database initialization
+# Installation
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-# twitter-lite-backend
+  1. Run `git clone https://github.com/wrotich/twitter-lite-backend.git`
+  2. Run `bundle install`
+  3. Run `rake db:create`
+  4. Run `rake db:migrate`
+  5. Run `rails s`
+  6. Visit `localhost:3000`
