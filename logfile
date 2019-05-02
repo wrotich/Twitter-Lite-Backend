@@ -1,0 +1,17 @@
+2019-04-24 12:36:35.971 EAT [1848] LOG:  listening on IPv6 address "::1", port 5432
+2019-04-24 12:36:35.971 EAT [1848] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2019-04-24 12:36:35.972 EAT [1848] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2019-04-24 12:36:36.004 EAT [1849] LOG:  database system was interrupted; last known up at 2019-04-20 11:02:18 EAT
+2019-04-24 12:36:36.218 EAT [1849] LOG:  database system was not properly shut down; automatic recovery in progress
+2019-04-24 12:36:36.223 EAT [1849] LOG:  redo starts at 0/3ECAB78
+2019-04-24 12:36:36.223 EAT [1849] LOG:  invalid record length at 0/3ECAC58: wanted 24, got 0
+2019-04-24 12:36:36.223 EAT [1849] LOG:  redo done at 0/3ECAC20
+2019-04-24 12:36:36.240 EAT [1848] LOG:  database system is ready to accept connections
+2019-04-24 15:28:37.068 EAT [3425] ERROR:  relation "tweets" already exists
+2019-04-24 15:28:37.068 EAT [3425] STATEMENT:  CREATE TABLE "tweets" ("id" serial primary key, "body" character varying, "created_by" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)
+2019-04-24 15:28:50.015 EAT [3442] FATAL:  lock file "postmaster.pid" already exists
+2019-04-24 15:28:50.015 EAT [3442] HINT:  Is another postmaster (PID 1848) running in data directory "/usr/local/var/postgres"?
+2019-04-24 15:28:57.201 EAT [3458] ERROR:  database "twitter-lite-backend_development" already exists
+2019-04-24 15:28:57.201 EAT [3458] STATEMENT:  CREATE DATABASE "twitter-lite-backend_development" ENCODING = 'unicode'
+2019-04-24 15:28:57.211 EAT [3459] ERROR:  database "twitter-lite-backend_test" already exists
+2019-04-24 15:28:57.211 EAT [3459] STATEMENT:  CREATE DATABASE "twitter-lite-backend_test" ENCODING = 'unicode'
