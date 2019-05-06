@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'tweet/:tags', to: 'tweets#find_by_tag'
   resources :tweets
   post 'auth/login', to: 'authentication#authenticate'
   post 'signup', to: 'users#create'

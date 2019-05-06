@@ -14,5 +14,6 @@ FactoryBot.define do
   factory :tweet do
     body { Faker::Lorem.word }
     created_by { Faker::Number.number(10) }
+    tags { "#" + Faker::Lorem.word }
   end
 end

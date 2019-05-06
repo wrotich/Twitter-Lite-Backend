@@ -4,7 +4,7 @@ class TweetsController < ApplicationController
   # GET /tweets
   def index
     # binding.pry
-    @tweets = current_user.tweets
+    @tweets = Tweet.all
     json_response(@tweets)
   end
 
@@ -31,11 +31,20 @@ class TweetsController < ApplicationController
     head :no_content
   end
 
+  # GET /tweets/:tags
+  def find_by_tag
+    @tweets = Tweet.where("tags LIKE ?", "%#" + params[:tags] + "%")
+    json_response(@tweets)
+  end
+
   private
 
   def tweet_params
     # whitelist params
-    params.permit(:body)
+    @body = params[:body]
+    @tags = @body.scan(/#\w+/) unless @body.nil?
+    params[:tags] = @tags.to_s
+    params.permit(:body, :tags)
   end
 
   def set_tweet
