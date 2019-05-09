@@ -12,7 +12,7 @@ RSpec.describe 'tweets API', type: :request do
   # Test suite for GET /tweets
   describe 'GET /tweets' do
     # make HTTP get request before each example
-    before { get '/tweets' , params: {}, headers: headers }
+    before { get '/tweets', params: {}, headers: headers }
 
     it 'returns tweets' do
       # Note `json` is a custom helper to parse JSON responses
@@ -84,7 +84,7 @@ RSpec.describe 'tweets API', type: :request do
         expect(json['message'])
           .to match(/Validation failed: Body can't be blank/)
       end
-  end
+    end
   end
 
   # Test suite for PUT /tweets/:id

@@ -9,10 +9,14 @@
 #  updated_at :datetime         not null
 #
 
-# spec/factories/tweets.rb
-FactoryBot.define do
-  factory :tweet do
-    body { Faker::Lorem.word }
-    created_by { Faker::Number.number(10) }
+class TweetSerializer < ActiveModel::Serializer
+  attributes \
+    :id,
+    :body,
+    :created_by,
+    :created_at
+
+  def created_at
+    TimeDiffCalc.call(object.created_at)
   end
 end

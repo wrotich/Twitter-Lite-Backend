@@ -5,6 +5,9 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+# gem for serializer
+gem 'active_model_serializers', '~> 0.10.2'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.7', '>= 5.0.7.2'
 # Use postgresql as the database for Active Record
@@ -26,6 +29,7 @@ gem 'puma', '~> 3.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'annotate'
   gem 'byebug', platform: :mri
   gem 'pry'
   gem 'rspec-rails', '~> 3.5'
