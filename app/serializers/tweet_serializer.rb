@@ -14,7 +14,8 @@ class TweetSerializer < ActiveModel::Serializer
     :id,
     :body,
     :created_by,
-    :created_at
+    :created_at,
+    :tags
 
   def created_at
     TimeDiffCalc.call(object.created_at)

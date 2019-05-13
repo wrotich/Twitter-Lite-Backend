@@ -6,6 +6,8 @@ RSpec.describe 'tweets API', type: :request do
   let(:user) { create(:user) }
   let!(:tweets) { create_list(:tweet, 10, created_by: user.id) }
   let(:tweet_id) { tweets.first.id }
+  let(:tweet_tag) { tweets.first.tags }
+  let(:tag) { tweet_tag.gsub(/^./, "") }
   # authorize request
   let(:headers) { valid_headers }
 
@@ -49,6 +51,35 @@ RSpec.describe 'tweets API', type: :request do
 
       it 'returns a not found message' do
         expect(response.body).to match(/Couldn't find Tweet/)
+      end
+    end
+  end
+
+  # Test suite for GET /tweet/:tags
+  describe 'GET /tweet/:tags' do
+    before { get "/tweet/#{tag}", params: {}, headers: headers }
+
+    context 'when the record exists' do
+      it 'returns the tweet' do
+        expect(json).not_to be_empty
+        expect(json[0]['tags']).to eq(tweet_tag)
+      end
+
+      it 'returns status code 200' do
+        expect(response).to have_http_status(200)
+      end
+    end
+
+    context 'when the record does not exist' do
+
+      it 'returns status code 404' do
+        get "/tweet/sometag", params: {}, headers: headers
+        expect(response).to have_http_status(200)
+      end
+
+      it 'returns a not found message' do
+        get "/tweet/sometag", params: {}, headers: headers
+        expect(response.body).to eq("[]")
       end
     end
   end
