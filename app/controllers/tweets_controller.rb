@@ -3,8 +3,7 @@ class TweetsController < ApplicationController
 
   # GET /tweets
   def index
-    # binding.pry
-    @tweets = Tweet.all
+    @tweets = Tweet.all.order(updated_at: :desc)
     json_response(@tweets)
   end
 

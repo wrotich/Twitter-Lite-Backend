@@ -7,6 +7,5 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.create(name: 'Max', email: 'maxwell.githinji@andela.com', password: '121321')
-# binding.pry
 User.first.tweets.create(body: 'hi am max')
 User.first.tweets.create(body: 'out')
