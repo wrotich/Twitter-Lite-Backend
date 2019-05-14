@@ -17,7 +17,7 @@ class User < ApplicationRecord
   has_many :tweets, foreign_key: :created_by
   # Validations
   validates_presence_of :name, :email, :password_digest
-  validates :email,
+  validates :email, uniqueness: {message: "already registered"},
             format: { with: URI::MailTo::EMAIL_REGEXP, message: 'is invalid' }
   validates_format_of :email,
                       with: /((?!\.)[a-z0-9._%+-]+(?!\.)\w)@andela\.com/,
