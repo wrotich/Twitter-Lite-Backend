@@ -11,6 +11,8 @@
 #
 
 class Tweet < ApplicationRecord
+  has_many :likes, dependent: :destroy
+
   # validations
   validates_presence_of :body, :created_by
 end

@@ -18,6 +18,7 @@ class TweetSerializer < ActiveModel::Serializer
     :created_at,
     :tags,
     :curr_user
+    :likes_count
 
   def created_at
     TimeDiffCalc.call(object.created_at)
@@ -28,5 +29,9 @@ class TweetSerializer < ActiveModel::Serializer
       id: object.created_by.first
         ).pluck(:name)[0]
     curr_user
+  end
+
+  def likes_count
+    likes = Like.count
   end
 end
