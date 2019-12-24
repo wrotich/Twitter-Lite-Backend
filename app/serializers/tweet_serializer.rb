@@ -2,7 +2,7 @@
 #
 # Table name: tweets
 #
-#  id         :integer          not null, primary key
+#  id         :bigint(8)        not null, primary key
 #  body       :string
 #  created_by :string
 #  tags       :text
@@ -24,9 +24,9 @@ class TweetSerializer < ActiveModel::Serializer
   end
 
   def curr_user
-    curr_user = User.select(:name).where(
-      id: object.created_by.first
-        ).pluck(:name)[0]
+    curr_user = User.select(:name, :id).where(
+      id: object.created_by
+      ).pluck(:name)[0]
     curr_user
   end
 end

@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190506114749) do
+ActiveRecord::Schema.define(version: 20190517114649) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "tweets", force: :cascade do |t|
+  create_table "tweets", id: :bigserial, force: :cascade do |t|
     t.string   "body"
     t.string   "created_by"
     t.datetime "created_at", null: false
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20190506114749) do
     t.text     "tags"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", id: :bigserial, force: :cascade do |t|
     t.string   "name"
     t.string   "email"
     t.string   "password_digest"
